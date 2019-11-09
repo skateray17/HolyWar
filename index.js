@@ -21,7 +21,7 @@ const canMove = (x1, y1, x2 = x, y2 = y, actions = currentActionCount) => {
 }
 
 const isSavePosition = (x, y) => {
-  return !enemies.some(e => canMove(x, y, e.position.x, e.position.y, 3));
+  return !enemies.filter(e => e.position.x !== x || e.position.y !== y).some(e => canMove(x, y, e.position.x, e.position.y, 3));
 }
 
 const enemiesToKill = enemies.filter(e => canMove(e.position.x, e.position.y));
@@ -69,7 +69,9 @@ if (enemiesToKill.length) {
     }
   } else {
     // just choose random
-    pos = availablePositions[getRandomInt(availablePositions.length - 1)];
+    do {
+      pos = availablePositions[getRandomInt(availablePositions.length - 1)];
+    } while(pos.x !== x || pos.y !== y || availablePositions.length <= 1);
   }
 }
 
