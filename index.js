@@ -12,7 +12,7 @@ const currentActionCount = API.getActionPointsCount();
 const arenaSize = API.getArenaSize();
 
 const dist = (p1, p2) => {
-  return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
+  return Math.abs(p1.x - p2.x) + Math.abs(p1.y - p2.y);
 }
 
 const canMove = (x1, y1, x2 = x, y2 = y, actions = currentActionCount) => {
