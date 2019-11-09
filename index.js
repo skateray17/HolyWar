@@ -17,7 +17,7 @@ const dist = (p1, p2) => {
 
 const canMove = (x1, y1, x2 = x, y2 = y, actions = currentActionCount) => {
   return dist({ x: x2, y: y2 }, { x: x1, y: y1 }) <= actions
-    && x1 >= 0 && x < arenaSize && y >= 0 && y < arenaSize;
+    && x1 >= 0 && x1 < arenaSize && y1 >= 0 && y1 < arenaSize;
 }
 
 const isSavePosition = (x, y) => {
